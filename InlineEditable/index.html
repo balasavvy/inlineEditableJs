@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Edit table</title>
+	<meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" />
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+        <link rel="stylesheet" href="./css/bootstrap.css">
+    <link rel="stylesheet" href="./css/customcss.css">
+    <link rel="stylesheet" href="./css/bootstrap-combined.css">
+    <link rel="stylesheet" href="./css/bootstrap-datetimepicker.min.css">
+    <style>
+    .scrollActive_true{
+    position: relative;
+    overflow: auto;width: 100%;
+    }
+    header h1{
+    color: #31708f;display: inline-block
+    }
+    header{
+    box-shadow: 0px 3px 13px #dddddd;
+    -webkit-box-shadow: 0px 3px 13px #dddddd;
+    -moz-box-shadow: 0px 3px 13px #dddddd;
+    -o-box-shadow: 0px 3px 13px #dddddd;
+    padding-left: 10px;
+
+    }
+    small{
+        color: #5b829b;
+        font-size: 12px;
+        font-weight: bold;
+    }
+    </style>
+    </head>
+
+<body class="font-medium">
+     <section id="wrapper" class="container">
+        <div class="row">
+            <header>
+            <h1>InlineEditable JS <p class="small text-right">-customized plugin</p></h1>
+            </header>
+         </div>
+          <div class="row mt20">
+              <div class="container">
+              <section>
+                <h5>1.Inline Edit Table with Default Functionality[Add,Edit,Delete,Save,Cancel]</h5>  
+                <div class="hnfs-res-table col-lg-10 col-xs-12 mt10 p0">
+                <!--AddBtn for this table-->
+                <button class="btn btn-primary hidden">Add</button> <!--Make it hidden -->   
+                <table class="table mb0 table-layout-fixed" id="inlineDefaultTable">
+                </table>  
+                  
+                </div>   
+                <div class="col-lg-10 col-xs-12 mt10 mb10 p0">
+                <div class="panel panel-default">
+                <div class="panel-heading">
+                <h6 class="pl10">Source: <span class="rellow text-yellow">Click here</span></h6>    
+                </div>
+                <div class="panel-body">
+                <h4>HTML:</h4>  
+<xmp>
+ <!--AddBtn for this table-->
+<button class="btn btn-primary hidden">Add</button> <!--Make it hidden -->   
+<table class="table" id="inlineDefaultTable"></table>   
+</xmp>
+                <h4>Script:</h4>
+<xmp>
+    //Use Json file or can do it manually
+    var inlineEditDefault={
+        "data":
+        [
+            {"column1":"Bala","column2":"10th Std"}
+        ],
+        "columns":
+        [
+            {"name":"column1","displayName":"Student Name","fieldType":"text","editable": true,
+                "fieldValues":"",	"defaultValue":""},
+            {"name":"column2","displayName":"Class","fieldType":"text","editable": true,
+                "fieldValues":"",	"defaultValue":""},
+            //Default Action columns//
+            {            
+                "name":"actions",
+                "displayName":"Add",
+                "fieldType":"admin",
+                "editable": false,
+                "fieldValues":"",
+                "defaultValue":""
+            }
+        ]
+    } 
+    $(document).ready(function(){  
+            $('#inlineDefaultTable' ).inlineEdiTable({
+                    customColumns:inlineEditDefault.columns,
+                    customdata:inlineEditDefault.data,
+                    addBtn:"true",
+                    editBtn:"true",
+                    deleteBtn:"true"
+            }); 
+
+    }); 
+</xmp>
+                </div>  
+                  
+                </div>
+                  
+                  
+                  
+                  </div>
+                <div class="clearfix"></div>
+                <h5>2.Inline Edit Table supports textFiled,Select,Chekbox,Datetimepicker and also supports to make readonly of particular column. </h5>  
+                <div class="hnfs-res-table col-lg-10 col-xs-12 mt10 p0">
+                <!--AddBtn for this table-->
+                <button class="btn btn-primary hidden">Add</button> <!--Make it hidden -->   
+                <table class="table mb0 table-layout-fixed" id="inlineDefaultTable01"></table>  
+                  
+                </div>
+                 <div class="col-lg-10 col-xs-12 mt10 mb10 p0">
+                <div class="panel panel-default">
+                <div class="panel-heading">
+                <h6 class="pl10">Source: <span class="rellow text-yellow">Click here</span></h6>    
+                </div>
+                <div class="panel-body">
+                <h4>HTML:</h4>  
+<xmp>
+ <!--AddBtn for this table-->
+<button class="btn btn-primary hidden">Add</button> <!--Make it hidden -->   
+<table class="table mb0 table-layout-fixed" id="inlineDefaultTable01"></table>    
+</xmp>
+                <h4>Script:</h4>
+<xmp>
+    //Use Json file or can do it manually
+    var inlineDefaultTable01={
+        "data":[
+            {"column1":"Bala","column2":"11/1/1992","column3":"M","column4":true}
+        ],
+        "columns":[
+            {"name":"column1","displayName":"Student Name","fieldType":"text","editable": true,
+                "fieldValues":"",	"defaultValue":""},
+            {"name":"column2","displayName":"DoB","fieldType":"datetimepicker","editable": true,
+                "fieldValues":"",	"defaultValue":""},
+            {"name":"column3","displayName":"Gender","fieldType":"select","editable": true,
+                "fieldValues": [
+                                    ['M','Male'],
+                                    ['F','Female']
+                               ]},
+            {"name":"column4","displayName":"status","fieldType":"checkbox","editable": true,
+                "fieldValues":"",	"defaultValue":""},
+
+            //Default Action columns//
+            {            
+                "name":"actions",
+                "displayName":"Add",
+                "fieldType":"admin",
+                "editable": false,
+                "fieldValues":"",
+                "defaultValue":""
+            } 
+        ]  
+    } 
+    $(document).ready(function(){  
+        $('body').on('click', '.addbtn', function (e) {
+            $(this).parents("table").prev("button").trigger("click");
+        });
+        $('body').on('click', '.dynamicDate', function (e) {				
+            $('.dynamicDate').datetimepicker({
+             format: 'MM/DD/YYYY'
+            }).on('changeDate', function(ev) {
+                $(this).datetimepicker('hide');
+            });			
+         });
+        $('#inlineDefaultTable01' ).inlineEdiTable({
+                customColumns:inlineDefaultTable01.columns,
+                customdata:inlineDefaultTable01.data,
+                addBtn:"true",
+                editBtn:"true",
+                deleteBtn:"true",
+                disableCoumntoEdit:{"name":["column4"]}
+        }); 
+        }); 
+</xmp>
+                </div>  
+                  
+                </div>
+                  
+                  
+                  
+                  </div>
+				   <div class="clearfix"></div>
+				  <h5>3.Inline Edit Table with Edit,save,Delete,cancel call back functions.</h5>
+				  <div class="hnfs-res-table col-lg-10 col-xs-12 mt10 p0">
+					<!--AddBtn for this table-->
+					<button class="btn btn-primary hidden">Add</button> <!--Make it hidden -->   
+					<table class="table mb0 table-layout-fixed" id="inlineDefaultTable02"></table> 
+				  </div>
+				  <div class="col-lg-10 col-xs-12 mt10 mb10 p0">
+                <div class="panel panel-default">
+                <div class="panel-heading">
+                <h6 class="pl10">Source: <span class="rellow text-yellow">Click here</span></h6>    
+                </div>
+                <div class="panel-body">
+                <h4>HTML:</h4>  
+<xmp>
+ <!--AddBtn for this table-->
+<button class="btn btn-primary hidden">Add</button> <!--Make it hidden -->   
+<table class="table mb0 table-layout-fixed" id="inlineDefaultTable02"></table>    
+</xmp>
+                <h4>Script:</h4>
+<xmp>
+    //Use Json file or can do it manually
+    var inlineEditDefault02={
+        "data":[
+            {"column1":"Bala","column2":"10th Std"}
+        ],
+        "columns":[
+
+            {"name":"column1","displayName":"Student Name","fieldType":"text","editable": true,
+                "fieldValues":"",	"defaultValue":""},
+            {"name":"column2","displayName":"Class","fieldType":"text","editable": true,
+                "fieldValues":"",	"defaultValue":""},
+            //Default Action columns//
+            {            
+                "name":"actions",
+                "displayName":"Add",
+                "fieldType":"admin",
+                "editable": false,
+                "fieldValues":"",
+                "defaultValue":""
+            } 
+        ]  
+    } 
+    $(document).ready(function(){  
+        $('body').on('click', '.addbtn', function (e) {
+            $(this).parents("table").prev("button").trigger("click");
+        });
+        $('body').on('click', '.dynamicDate', function (e) {				
+            $('.dynamicDate').datetimepicker({
+             format: 'MM/DD/YYYY'
+            }).on('changeDate', function(ev) {
+                $(this).datetimepicker('hide');
+            });			
+         });
+        $('#inlineDefaultTable02' ).inlineEdiTable({
+                customColumns:inlineEditDefault02.columns,
+                customdata:inlineEditDefault02.data,
+                addBtn:"true",
+                editBtn:"true",
+                deleteBtn:"true",
+                addCallback: function () {},
+                editCallback: function () {
+                    //own scripts here
+                    alert("Edit function initiates");
+                },
+                deleteCallback: function () {
+                    //own scripts here
+                    alert("delete function initiates");
+                },
+                cancelCallback: function () {						
+                    //own scripts here
+                    alert("cancel function initiates");
+                }
+        }); 
+        }); 
+</xmp>
+                </div>  
+                  
+                </div>
+                  
+                  
+                  
+                  </div>
+				  <div class="clearfix"></div>
+				  <h5>3.Inline Edit Table with Bootstrap Pagination [No conflicts for Multiple Pagination in a page</h5>
+				  <div class="hnfs-res-table col-lg-10 col-xs-12 mt10 p0">
+					<!--AddBtn for this table-->
+					<button class="btn btn-primary hidden">Add</button> <!--Make it hidden -->   
+					<table class="table mb0 table-layout-fixed" id="inlineDefaultTable03"></table> 
+					  <div id="pagination03"></div>
+				  </div>
+				  
+				  <div class="hnfs-res-table col-lg-10 col-xs-12 mt10 p0">
+					<!--AddBtn for this table-->
+					<button class="btn btn-primary hidden">Add</button> <!--Make it hidden -->   
+					<table class="table mb0 table-layout-fixed" id="inlineDefaultTable04"></table> 
+					  <div id="pagination04"></div>
+				  </div>
+				  <div class="col-lg-10 col-xs-12 mt10 mb10 p0">
+                <div class="panel panel-default">
+                <div class="panel-heading">
+                <h6 class="pl10">Source: <span class="rellow text-yellow">Click here</span></h6>    
+                </div>
+                <div class="panel-body">
+                <h4>HTML:</h4>  
+<xmp>
+ <!--AddBtn for this table-->
+<button class="btn btn-primary hidden">Add</button> <!--Make it hidden -->   
+<table class="table mb0 table-layout-fixed" id="inlineDefaultTable03"></table> 
+<!--AddBtn for this table-->
+<button class="btn btn-primary hidden">Add</button> <!--Make it hidden -->   
+<table class="table mb0 table-layout-fixed" id="inlineDefaultTable04"></table> 
+</xmp>
+                <h4>Script:</h4>
+<xmp>
+    //Use Json file or can do it manually
+    var inlineEditDefault03={
+        "data":[
+            {"column1":"Bala","column2":"10th Std"},
+            {"column1":"Bala1","column2":"12th Std"},
+            {"column1":"Bala2","column2":"11th Std"},
+            {"column1":"Bala3","column2":"10th Std"},
+            {"column1":"Bala4","column2":"9th Std"},
+            {"column1":"Bala5","column2":"11th Std"},
+            {"column1":"Bala6","column2":"10th Std"},
+            {"column1":"Bala7","column2":"12th Std"}
+        ],
+        "columns":[
+
+            {"name":"column1","displayName":"Student Name","fieldType":"text","editable": true,
+                "fieldValues":"",	"defaultValue":""},
+            {"name":"column2","displayName":"Class","fieldType":"text","editable": true,
+                "fieldValues":"",	"defaultValue":""},
+            //Default Action columns//
+            {            
+                "name":"actions",
+                "displayName":"Add",
+                "fieldType":"admin",
+                "editable": false,
+                "fieldValues":"",
+                "defaultValue":""
+            } 
+        ]  
+    }
+    var inlineEditDefault04={
+        "data":[
+            {"column1":"Ramesh","column2":"10th Std"},
+            {"column1":"Prabhu","column2":"12th Std"},
+            {"column1":"Ragul","column2":"11th Std"},
+            {"column1":"Suresh","column2":"10th Std"},
+            {"column1":"Ragu","column2":"9th Std"},
+            {"column1":"Rathna","column2":"11th Std"},
+            {"column1":"Deva","column2":"10th Std"},
+            {"column1":"Arun","column2":"12th Std"}
+        ],
+        "columns":[
+
+            {"name":"column1","displayName":"Student Name","fieldType":"text","editable": true,
+                "fieldValues":"",	"defaultValue":""},
+            {"name":"column2","displayName":"Class","fieldType":"text","editable": true,
+                "fieldValues":"",	"defaultValue":""},
+            //Default Action columns//
+            {            
+                "name":"actions",
+                "displayName":"Add",
+                "fieldType":"admin",
+                "editable": false,
+                "fieldValues":"",
+                "defaultValue":""
+            } 
+        ]  
+    } 
+    $(document).ready(function(){  
+        $('body').on('click', '.addbtn', function (e) {
+            $(this).parents("table").prev("button").trigger("click");
+        });
+        $('body').on('click', '.dynamicDate', function (e) {				
+            $('.dynamicDate').datetimepicker({
+             format: 'MM/DD/YYYY'
+            }).on('changeDate', function(ev) {
+                $(this).datetimepicker('hide');
+            });			
+         });
+        $('#inlineDefaultTable03' ).inlineEdiTable({
+                customColumns:inlineEditDefault03.columns,
+                customdata:inlineEditDefault03.data,
+                addBtn:"true",
+                editBtn:"true",
+                deleteBtn:"true",
+                pagination:"true",
+                rowsConatiner:$(this).find("tr"),
+                paginationConatiner:$('#pagination03'),                                
+                pageSize:2
+        });
+            $('#inlineDefaultTable04' ).inlineEdiTable({
+                customColumns:inlineEditDefault04.columns,
+                customdata:inlineEditDefault04.data,
+                addBtn:"true",
+                editBtn:"true",
+                deleteBtn:"true",
+                pagination:"true",
+                rowsConatiner:$(this).find("tr"),
+                paginationConatiner:$('#pagination04'),                                
+                pageSize:2
+        }); 
+        }); 
+</xmp>
+                </div>  
+                </div>
+                 </div>
+              <div class="clearfix"></div>
+            </section>
+              
+              
+              </div>
+         </div>
+         <div class="row mt20">
+            <h4>Required Library Files</h4>
+            <p>1.jQuery Library File</p>
+            <p>2.Bootstrap Library File</p>
+            <p>3.Bootstrap-Datetimepicker Library File,It requires moment JS [included]</p>
+            <p>3.Include inlineEdittable JS File</p>
+         </div>
+        <div class="row mt20">
+            <footer>
+               <p><b>FYI:</b>We are working on some other bug Fixes</p>
+                <p>Regards,</p>
+                <p>Balachandar D</p>
+                
+            </footer>            
+        </div>
+    </section>
+        <!-- jQuery library -->
+    <script src="js/jquery-2.2.4.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>  
+    <script src="js/moment.min.js"></script>  
+    <script src="js/bootstrap-datetimepicker.min.js"></script>
+    <script src="js/inlineEdittable.min.js"></script>
+    <script src="js/customjs.js"></script>
+    </body>   
+</html>

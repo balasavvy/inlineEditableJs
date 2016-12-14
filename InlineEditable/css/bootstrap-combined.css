@@ -1,0 +1,105 @@
+input-append, .input-prepend {
+    margin-bottom: 5px;
+    font-size: 0;
+    white-space: nowrap;
+}
+.icon-calendar {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    margin-top: 4px;
+    line-height: 14px;
+    vertical-align: text-top;
+    background-position: 14px 14px;
+    background-repeat: no-repeat;
+}
+.icon-calendar {
+    background-position: -192px -120px;
+}
+.input-append.date .add-on i, .input-prepend.date .add-on i {
+    display: block;
+    cursor: pointer;
+    width: 16px;
+    height: 13px;
+}
+.input-append .add-on, .input-prepend .add-on {
+    display: inline-block;
+    width: auto;
+    height: 31px;
+    min-width: 16px;
+    font-size: 14px;
+    font-weight: normal;
+    line-height: 20px;
+    text-align: center;
+    text-shadow: 0 1px 0 #fff;
+    background-color: #eee;
+    border: 1px solid #37637a;
+}
+.input-append .add-on, .input-prepend .add-on, .input-append .btn, .input-prepend .btn, .input-append .btn-group>.dropdown-toggle, .input-prepend .btn-group>.dropdown-toggle {
+    -moz-border-radius: 0;
+}
+.input-append .add-on, .input-append .btn, .input-append .btn-group {
+    margin-left: -1px;
+}
+.input-append .add-on:last-child, .input-append .btn:last-child, .input-append .btn-group:last-child>.dropdown-toggle {
+    -webkit-border-radius: 0;
+    -moz-border-radius: 0;
+    border-radius: 0;
+    width: 10%
+}
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    display: none;
+    float: left;
+    min-width: 160px;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    list-style: none;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border: 1px solid rgba(0,0,0,0.2);
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    -webkit-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    -moz-box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 5px 10px rgba(0,0,0,0.2);
+    -webkit-background-clip: padding-box;
+    -moz-background-clip: padding;
+    background-clip: padding-box;
+}
+.input-append .form-control{
+	width: 90%;
+    display: inline-block;
+    float: left;
+}
+.input-append{
+	overflow: hidden;
+}
+.input-append .add-on{
+    float: left;
+}
+.input-group-addon {
+	padding: 6px 8px;
+    color: #fff;
+    background-color: #37637a;
+    border: 1px solid #37637a;
+}
+.input-group-addon .glyphicon-calendar:before{
+    background-image: url("../images/calender.png");
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    content: "";
+    background-size: 100%;
+    margin-top: -1px;
+}
+@media(max-width:768px){
+
+	.input-append .form-control{
+		width: 90%;
+	}
+}
